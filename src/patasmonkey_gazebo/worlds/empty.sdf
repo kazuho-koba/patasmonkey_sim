@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="default">
+    <!-- 物理エンジンの設定 -->
+    <physics name="default_physics" type="ode">
+      <gravity>0 0 -9.81</gravity>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <!-- シーンの設定 -->
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+    </scene>
+
+    <!-- 地面と太陽のモデルを含む -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+
+    <!-- GUI設定（任意） -->
+    <gui>
+      <plugin filename="ignition-gui-system" name="ignition::gui::systems::SceneBroadcaster"/>
+    </gui>
+  </world>
+</sdf>
