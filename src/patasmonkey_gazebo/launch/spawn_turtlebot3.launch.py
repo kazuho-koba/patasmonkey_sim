@@ -17,23 +17,21 @@ def generate_launch_description():
     tb3_model = "waffle_pi"
 
     # path to the empty world file
-    world_file = os.path.join(
-        get_package_share_directory("patasmonkey_gazebo"),
-        "worlds",
-        "empty.sdf"
+    world_file = os.path.expanduser(
+        "~/.ignition/gazebo/worlds/simple_baylands/simple_baylands.sdf"
     )
 
     # load URDF from turtlebot3_description directory
     robot_model_file = os.path.join(
         get_package_share_directory("turtlebot3_description"),
         "urdf",
-        "turtlebot3_waffle_pi.urdf"
+        "turtlebot3_waffle_pi.urdf",
     )
 
     # read robot_description for robot_state_publisher via python
     try:
-        with open(robot_model_file, 'r') as infp:
-            robot_description_content = infp.read().replace('\n', ' ')
+        with open(robot_model_file, "r") as infp:
+            robot_description_content = infp.read().replace("\n", " ")
     except Exception as e:
         robot_description_content = ""
         print(f"Error reading robot model file: {e}")
@@ -41,32 +39,45 @@ def generate_launch_description():
     # launch gazebo
     ignition_launch = ExecuteProcess(
         cmd=[
-            'ros2', 'launch', 'ros_gz_sim', 'gz_sim.launch.py',
-            'gz_args:=' + world_file,
-            'gui:=true',
-            'paused:=false'
+            "ros2",
+            "launch",
+            "ros_gz_sim",
+            "gz_sim.launch.py",
+            "gz_args:=" + world_file,
+            "gui:=true",
+            "paused:=false",
         ],
-        output='screen'
+        output="screen",
     )
 
     # launch robot_state_publisher
     rsp_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        name='robot_state_publisher',
-        output='screen',
-        parameters=[{'robot_description': robot_description_content}]
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        name="robot_state_publisher",
+        output="screen",
+        parameters=[{"robot_description": robot_description_content}],
     )
 
     # spawn the robot
     spawn_entity = ExecuteProcess(
         cmd=[
-            'ros2', 'run', 'ros_gz_sim', 'create',
-            '-name', 'turtlebot3_waffle_pi',
-            '-file', robot_model_file,
-            '-x', '0.0', '-y', '0.0', '-z', '0.0'
+            "ros2",
+            "run",
+            "ros_gz_sim",
+            "create",
+            "-name",
+            "turtlebot3_waffle_pi",
+            "-file",
+            robot_model_file,
+            "-x",
+            "0.0",
+            "-y",
+            "0.0",
+            "-z",
+            "0.0",
         ],
-        output='screen'
+        output="screen",
     )
 
     return LaunchDescription(
@@ -78,5 +89,6 @@ def generate_launch_description():
         ]
     )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     generate_launch_description()
