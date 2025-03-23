@@ -2,6 +2,21 @@
 <sdf version="1.9">
 	<model name="patasmonkey_model">
 		<pose>0 0 0 0 0 0</pose>
+		<plugin name="gz::sim::systems::JointStatePublisher" filename="gz-sim-joint-state-publisher-system">
+			<topic>/joint_states</topic>
+		</plugin>
+		<plugin
+			filename="libignition-gazebo-diff-drive-system.so"
+			name="ignition::gazebo::systems::DiffDrive">
+			<left_joint>rev5</left_joint>
+			<left_joint>rev6</left_joint>
+    		<right_joint>rev7</right_joint>
+			<right_joint>rev8</right_joint>
+			<wheel_separation>0.4</wheel_separation>
+			<wheel_radius>0.1</wheel_radius>
+			<odom_publish_frequency>1</odom_publish_frequency>
+			<topic>/sim_cmd_vel</topic>
+		</plugin>
 		<link name="body_left:1">
 			<pose>0.0 0.0 0.0 0.0 -0.0 0.0</pose>
 			<inertial>
@@ -245,6 +260,20 @@
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
+				<surface>
+					<friction>
+						<ode>
+							<mu>1.0</mu>
+							<mu2>1.0</mu2>
+						</ode>
+					</friction>
+					 <contact>
+						<ode>
+							<kp>50000</kp>
+							<kd>5.0</kd>
+						</ode>
+					</contact>
+				</surface>
 			</collision>
 			<visual name="wheel:1_visual">
 				<geometry>
@@ -282,6 +311,20 @@
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
+				<surface>
+					<friction>
+						<ode>
+							<mu>1.0</mu>
+							<mu2>1.0</mu2>
+						</ode>
+					</friction>
+					 <contact>
+						<ode>
+							<kp>50000</kp>
+							<kd>5.0</kd>
+						</ode>
+					</contact>
+				</surface>
 			</collision>
 			<visual name="wheel:2_visual">
 				<geometry>
@@ -319,6 +362,20 @@
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
+				<surface>
+					<friction>
+						<ode>
+							<mu>1.0</mu>
+							<mu2>1.0</mu2>
+						</ode>
+					</friction>
+					 <contact>
+						<ode>
+							<kp>50000</kp>
+							<kd>5.0</kd>
+						</ode>
+					</contact>
+				</surface>
 			</collision>
 			<visual name="wheel:3_visual">
 				<geometry>
@@ -356,6 +413,20 @@
 						<scale>0.001 0.001 0.001</scale>
 					</mesh>
 				</geometry>
+				<surface>
+					<friction>
+						<ode>
+							<mu>1.0</mu>
+							<mu2>1.0</mu2>
+						</ode>
+					</friction>
+					 <contact>
+						<ode>
+							<kp>50000</kp>
+							<kd>5.0</kd>
+						</ode>
+					</contact>
+				</surface>
 			</collision>
 			<visual name="wheel:4_visual">
 				<geometry>
