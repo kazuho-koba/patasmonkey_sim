@@ -14,6 +14,8 @@ setup(
         ("share/" + package_name + "/launch", glob("launch/*.launch.py")),
         ("share/" + package_name + "/worlds", glob("worlds/*.sdf")),
         ("share/" + package_name + "/urdf", glob("urdf/*.urdf")),
+        ('share/' + package_name + '/sdf', glob('sdf/*.sdf')),
+        ('share/' + package_name + '/meshes', glob('meshes/**/*', recursive=True)),
     ],
     install_requires=["setuptools"],
     zip_safe=True,
