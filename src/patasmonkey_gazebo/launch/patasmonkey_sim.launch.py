@@ -12,7 +12,7 @@ def generate_launch_description():
     teleop_launch_path = os.path.join(
         get_package_share_directory("patasmonkey_teleop"),
         "launch",
-        "patasmonkey_teleop.launch.py",
+        "patasmonkey_teleop_sim.launch.py",
     )
     teleop_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(teleop_launch_path)
@@ -22,7 +22,7 @@ def generate_launch_description():
     spawn_launch_path = os.path.join(
         get_package_share_directory("patasmonkey_gazebo"),
         "launch",
-        "spawn_patasmonkey.launch.py",
+        "spawn_patasmonkey_sim.launch.py",
     )
     spawn_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(spawn_launch_path)

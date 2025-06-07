@@ -7,6 +7,11 @@
   <maintainer email="kazuho.kobayashi.ynu@gmail.com">mujin</maintainer>
   <license>MIT</license>
 
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>patasmonkey_teleop</exec_depend>
+
   <depend>rclpy</depend>
   <depend>gazebo_ros</depend>
 

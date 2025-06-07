@@ -10,9 +10,13 @@ def generate_launch_description():
     # model identifier
     ugv_model = "patasmonkey_model"
 
-    # path for world file
+    # path for world file (select a single file)
     world_file = os.path.expanduser(
-        "~/.ignition/gazebo/worlds/simple_baylands/simple_baylands.sdf"
+        # "~/.ignition/gazebo/worlds/simple_baylands/simple_baylands.sdf",
+        "~/.ignition/gazebo/worlds/kazu_playground1/kazu_playground1.sdf",
+        # "~/.ignition/gazebo/worlds/baylands/baylands.sdf",
+        # "~/.ignition/gazebo/worlds/harmonickazu/harmonickazu.sdf",
+        # "~/.ignition/gazebo/worlds/harmonicworld/harmonicworld.sdf",
     )
 
     # urdf file path for UGV(for visualization in rviz)
@@ -76,7 +80,7 @@ def generate_launch_description():
             "-y",
             "0.0",
             "-z",
-            "0.0",
+            "0.5",
             "-R", "0.0",    #
             "-P", "0.0",    # 
             "-Y", "3.1416"  # 
