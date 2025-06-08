@@ -13,10 +13,10 @@ def generate_launch_description():
     # path for world file (select a single file)
     world_file = os.path.expanduser(
         # "~/.ignition/gazebo/worlds/simple_baylands/simple_baylands.sdf",
-        "~/.ignition/gazebo/worlds/kazu_playground1/kazu_playground1.sdf",
+        # "~/.ignition/gazebo/worlds/kazu_playground1/kazu_playground1.sdf",
         # "~/.ignition/gazebo/worlds/baylands/baylands.sdf",
         # "~/.ignition/gazebo/worlds/harmonickazu/harmonickazu.sdf",
-        # "~/.ignition/gazebo/worlds/harmonicworld/harmonicworld.sdf",
+        "~/.ignition/gazebo/worlds/harmonicworld/harmonicworld.sdf",
     )
 
     # urdf file path for UGV(for visualization in rviz)
